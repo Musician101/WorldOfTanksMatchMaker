@@ -8,7 +8,7 @@ public enum Tank
 	CL_VICKERS_MK_E_TYPE_B(Constants.CHINA, Constants.LIGHT, 2, "Vickers Mk. E Type B"),
 	CL_CHI_HA(Constants.CHINA, Constants.LIGHT, 3, "Type 2597 Chi-Ha"),
 	CL_M5A1_STUART(Constants.CHINA, Constants.LIGHT, 4, "M5A1 Stuart"),
-	CL_TYPE_64(Constants.CHINA, Constants.LIGHT, 6, "Type 64", true),
+	CL_TYPE_64(Constants.CHINA, Constants.LIGHT, 6, "Type 64", "7-11", true),
 	CL_59_16(Constants.CHINA, Constants.LIGHT, 6, "59-16"),
 	CL_WZ_131(Constants.CHINA, Constants.LIGHT, 7, "WZ-131"),
 	CL_TYPE_62(Constants.CHINA, Constants.LIGHT, 7, "Type 62", true),
