@@ -1,11 +1,6 @@
 package musician101.wotmm;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import musician101.luc.gui.Gui;
@@ -15,6 +10,9 @@ import musician101.luc.gui.Gui.ScrollPane;
 import musician101.luc.gui.Gui.Table;
 import musician101.luc.gui.Gui.TextField;
 import musician101.wotmm.lib.Constants;
+import musician101.wotmm.listener.CountryListener;
+import musician101.wotmm.listener.MultiListener;
+import musician101.wotmm.listener.SearchListener;
 import musician101.wotmm.util.CustomTableModel;
 import musician101.wotmm.util.MMUtil;
 import musician101.wotmm.util.TableColumnAdjuster;
@@ -46,105 +44,22 @@ public class WoTMM extends JFrame
 		adjuster.adjustColumns();
 		
 		// Listeners
-		country.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				type.removeAllItems();
-				switch(country.getSelectedItem().toString())
-				{
-					case "China":
-						type.addAll(Constants.CHINA_TYPES);
-						break;
-					case "Japan":
-						type.addAll(Constants.JAPAN_TYPES);
-						break;
-					default:
-						type.addAll(Constants.ALL_TYPES);
-						break;
-				}
-			}
-		});
-		
-		type.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				if (type.getSelectedItem() != null)
-				{
-					tankModel.replace(MMUtil.getTanks(country.getSelectedItem().toString(), type.getSelectedItem().toString(), tier.getSelectedItem().toString(), battleTier.getSelectedItem().toString(), search.getText(), premium.getSelectedItem().toString()));
-					adjuster.adjustColumns();
-				}
-			}
-		});
-		
-		tier.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				tankModel.replace(MMUtil.getTanks(country.getSelectedItem().toString(), type.getSelectedItem().toString(), tier.getSelectedItem().toString(), battleTier.getSelectedItem().toString(), search.getText(), premium.getSelectedItem().toString()));
-				adjuster.adjustColumns();
-			}
-		});
-		
-		battleTier.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				tankModel.replace(MMUtil.getTanks(country.getSelectedItem().toString(), type.getSelectedItem().toString(), tier.getSelectedItem().toString(), battleTier.getSelectedItem().toString(), search.getText(), premium.getSelectedItem().toString()));
-				adjuster.adjustColumns();
-			}
-		});
-		
-		premium.addActionListener(new ActionListener()
-		{
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				tankModel.replace(MMUtil.getTanks(country.getSelectedItem().toString(), type.getSelectedItem().toString(), tier.getSelectedItem().toString(), battleTier.getSelectedItem().toString(), search.getText(), premium.getSelectedItem().toString()));
-				adjuster.adjustColumns();
-			}
-		});
-		
-		search.getDocument().addDocumentListener(new DocumentListener()
-		{
-
-			@Override
-			public void changedUpdate(DocumentEvent e)
-			{
-				tankModel.replace(MMUtil.getTanks(country.getSelectedItem().toString(), type.getSelectedItem().toString(), tier.getSelectedItem().toString(), battleTier.getSelectedItem().toString(), search.getText(), premium.getSelectedItem().toString()));
-				adjuster.adjustColumns();
-			}
-
-			@Override
-			public void insertUpdate(DocumentEvent e)
-			{
-				tankModel.replace(MMUtil.getTanks(country.getSelectedItem().toString(), type.getSelectedItem().toString(), tier.getSelectedItem().toString(), battleTier.getSelectedItem().toString(), search.getText(), premium.getSelectedItem().toString()));
-				adjuster.adjustColumns();
-			}
-
-			@Override
-			public void removeUpdate(DocumentEvent e)
-			{
-				tankModel.replace(MMUtil.getTanks(country.getSelectedItem().toString(), type.getSelectedItem().toString(), tier.getSelectedItem().toString(), battleTier.getSelectedItem().toString(), search.getText(), premium.getSelectedItem().toString()));
-				adjuster.adjustColumns();
-			}
-			
-		});
+		country.addActionListener(new CountryListener(this));
+		type.addActionListener(new MultiListener(this));
+		tier.addActionListener(new MultiListener(this));
+		battleTier.addActionListener(new MultiListener(this));
+		premium.addActionListener(new MultiListener(this));
+		search.getDocument().addDocumentListener(new SearchListener(this));
 		
 		// Add visual elements
-		this.getContentPane().add(country);
-		this.getContentPane().add(type);
-		this.getContentPane().add(tier);
-		this.getContentPane().add(battleTier);
-		this.getContentPane().add(premium);
-		this.getContentPane().add(search);
-		this.getContentPane().add(tankScroll);
-		this.getContentPane().add(panel);
+		getContentPane().add(country);
+		getContentPane().add(type);
+		getContentPane().add(tier);
+		getContentPane().add(battleTier);
+		getContentPane().add(premium);
+		getContentPane().add(search);
+		getContentPane().add(tankScroll);
+		getContentPane().add(panel);
 	}
 	
 	public static void main(String[] args)
