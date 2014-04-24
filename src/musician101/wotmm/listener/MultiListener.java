@@ -20,8 +20,7 @@ public class MultiListener implements ActionListener
 	{
 		if (wotmm.type.getSelectedItem() != null)
 		{
-			wotmm.tankModel.replace(MMUtil.getTanks(wotmm.country.getSelectedItem().toString(), wotmm.type.getSelectedItem().toString(), wotmm.tier.getSelectedItem().toString(), wotmm.battleTier.getSelectedItem().toString(), wotmm.search.getText(), wotmm.premium.getSelectedItem().toString()));
-			wotmm.adjuster.adjustColumns();
+			MMUtil.refreshTable(wotmm);
 		}
 	}
 }

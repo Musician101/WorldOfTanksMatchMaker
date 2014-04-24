@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import musician101.wotmm.WoTMM;
 import musician101.wotmm.lib.Tank;
 
 public class MMUtil
@@ -45,5 +46,11 @@ public class MMUtil
 			}
 		}
 		return list;
+	}
+	
+	public static void refreshTable(WoTMM wotmm)
+	{
+		wotmm.tankModel.replace(MMUtil.getTanks(wotmm.country.getSelectedItem().toString(), wotmm.type.getSelectedItem().toString(), wotmm.tier.getSelectedItem().toString(), wotmm.battleTier.getSelectedItem().toString(), wotmm.search.getText(), wotmm.premium.getSelectedItem().toString()));
+		wotmm.adjuster.adjustColumns();
 	}
 }

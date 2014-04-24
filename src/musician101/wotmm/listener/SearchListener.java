@@ -18,21 +18,18 @@ public class SearchListener implements DocumentListener
 	@Override
 	public void changedUpdate(DocumentEvent e)
 	{
-		wotmm.tankModel.replace(MMUtil.getTanks(wotmm.country.getSelectedItem().toString(), wotmm.type.getSelectedItem().toString(), wotmm.tier.getSelectedItem().toString(), wotmm.battleTier.getSelectedItem().toString(), wotmm.search.getText(), wotmm.premium.getSelectedItem().toString()));
-		wotmm.adjuster.adjustColumns();
+		MMUtil.refreshTable(wotmm);
 	}
 
 	@Override
 	public void insertUpdate(DocumentEvent e)
 	{
-		wotmm.tankModel.replace(MMUtil.getTanks(wotmm.country.getSelectedItem().toString(), wotmm.type.getSelectedItem().toString(), wotmm.tier.getSelectedItem().toString(), wotmm.battleTier.getSelectedItem().toString(), wotmm.search.getText(), wotmm.premium.getSelectedItem().toString()));
-		wotmm.adjuster.adjustColumns();
+		MMUtil.refreshTable(wotmm);
 	}
 
 	@Override
 	public void removeUpdate(DocumentEvent e)
 	{
-		wotmm.tankModel.replace(MMUtil.getTanks(wotmm.country.getSelectedItem().toString(), wotmm.type.getSelectedItem().toString(), wotmm.tier.getSelectedItem().toString(), wotmm.battleTier.getSelectedItem().toString(), wotmm.search.getText(), wotmm.premium.getSelectedItem().toString()));
-		wotmm.adjuster.adjustColumns();
+		MMUtil.refreshTable(wotmm);
 	}
 }
