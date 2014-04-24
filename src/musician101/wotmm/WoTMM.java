@@ -8,11 +8,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import musician101.wotmm.gui.GuiComboBox;
-import musician101.wotmm.gui.GuiPanel;
-import musician101.wotmm.gui.GuiScrollPane;
-import musician101.wotmm.gui.GuiTable;
-import musician101.wotmm.gui.GuiTextField;
+import musician101.luc.gui.Gui;
+import musician101.luc.gui.Gui.ComboBox;
+import musician101.luc.gui.Gui.Panel;
+import musician101.luc.gui.Gui.ScrollPane;
+import musician101.luc.gui.Gui.Table;
+import musician101.luc.gui.Gui.TextField;
 import musician101.wotmm.lib.Constants;
 import musician101.wotmm.util.CustomTableModel;
 import musician101.wotmm.util.MMUtil;
@@ -23,15 +24,15 @@ public class WoTMM extends JFrame
 {
 	DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
 	public CustomTableModel tankModel = new CustomTableModel(Constants.COLUMNS, MMUtil.getTanks("All", "All", "All", "All", "", "All"));
-	public GuiComboBox country = new GuiComboBox(Constants.Countries, 10, 10, 100, 20);
-	public GuiComboBox type = new GuiComboBox(Constants.ALL_TYPES, 115, 10, 100, 20);
-	public GuiComboBox tier = new GuiComboBox(Constants.ALL_TIERS, 220, 10, 45, 20);
-	public GuiComboBox battleTier = new GuiComboBox(Constants.ALL_BATTLE_TIERS, 270, 10, 45, 20);
-	public GuiComboBox premium = new GuiComboBox(Constants.PREMIUM, 320, 10, 110, 20);
-	public GuiTable tank = new GuiTable(tankModel);
-	public GuiTextField search = new GuiTextField(435, 10, 100, 20);
-	public GuiScrollPane tankScroll = new GuiScrollPane(tank, 37, 35);
-	private GuiPanel panel = new GuiPanel(545, 500);
+	public ComboBox country = new Gui.ComboBox(Constants.Countries, 10, 10, 100, 20);
+	public ComboBox type = new ComboBox(Constants.ALL_TYPES, 115, 10, 100, 20);
+	public ComboBox tier = new ComboBox(Constants.ALL_TIERS, 220, 10, 45, 20);
+	public ComboBox battleTier = new ComboBox(Constants.ALL_BATTLE_TIERS, 270, 10, 45, 20);
+	public ComboBox premium = new ComboBox(Constants.PREMIUM, 320, 10, 110, 20);
+	public Table tank = new Table(tankModel);
+	public TextField search = new TextField(435, 10, 100, 20);
+	public ScrollPane tankScroll = new ScrollPane(tank, 37, 35, 470, 455);
+	private Panel panel = new Panel(545, 500);
 	public static JFrame mainFrame;
 	public TableColumnAdjuster adjuster = new TableColumnAdjuster(tank);
 	

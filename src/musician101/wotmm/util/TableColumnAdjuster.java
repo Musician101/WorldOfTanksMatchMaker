@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JTable;
 import javax.swing.KeyStroke;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -17,15 +18,13 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
-import musician101.wotmm.gui.GuiTable;
-
 /*
  *	Code provided by Rob Camick
  * http://tips4java.wordpress.com/2008/11/10/table-column-adjuster/
  */
 public class TableColumnAdjuster implements PropertyChangeListener, TableModelListener
 {
-	private GuiTable table;
+	private JTable table;
 	private int spacing;
 	private boolean isColumnHeaderIncluded;
 	private boolean isColumnDataIncluded;
@@ -36,7 +35,7 @@ public class TableColumnAdjuster implements PropertyChangeListener, TableModelLi
 	/*
 	 * Specify the table and use default spacing
 	 */
-	public TableColumnAdjuster(GuiTable table)
+	public TableColumnAdjuster(JTable table)
 	{
 		this(table, 6);
 	}
@@ -44,7 +43,7 @@ public class TableColumnAdjuster implements PropertyChangeListener, TableModelLi
 	/*
 	 * Specify the table and spacing
 	 */
-	public TableColumnAdjuster(GuiTable table, int spacing)
+	public TableColumnAdjuster(JTable table, int spacing)
 	{
 		this.table = table;
 		this.spacing = spacing;
