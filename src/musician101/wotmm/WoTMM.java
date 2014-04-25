@@ -3,7 +3,6 @@ package musician101.wotmm;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import musician101.luc.gui.Gui;
 import musician101.luc.gui.Gui.ComboBox;
 import musician101.luc.gui.Gui.Panel;
 import musician101.luc.gui.Gui.ScrollPane;
@@ -22,7 +21,7 @@ public class WoTMM extends JFrame
 {
 	DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
 	public CustomTableModel tankModel = new CustomTableModel(Constants.COLUMNS, MMUtil.getTanks("All", "All", "All", "All", "", "All"));
-	public ComboBox country = new Gui.ComboBox(Constants.Countries, 10, 10, 100, 20);
+	public ComboBox country = new ComboBox(Constants.Countries, 10, 10, 100, 20);
 	public ComboBox type = new ComboBox(Constants.ALL_TYPES, 115, 10, 100, 20);
 	public ComboBox tier = new ComboBox(Constants.ALL_TIERS, 220, 10, 45, 20);
 	public ComboBox battleTier = new ComboBox(Constants.ALL_BATTLE_TIERS, 270, 10, 45, 20);
